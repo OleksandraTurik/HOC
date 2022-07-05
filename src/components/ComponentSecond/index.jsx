@@ -3,8 +3,8 @@ import Device from '../../HOC/device';
 
 class ComponentSecond extends Component {
   render() {
-    return <p>Hello</p>;
+    return <p>Welcome to my homework</p>;
   };
 };
 
-export default Device(ComponentSecond, '(max-width: 600px)', 'matchMedia');
+export default Device(ComponentSecond, '(min-width: 624px)', 'isMediaMatched');

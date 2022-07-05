@@ -3,8 +3,8 @@ import Media from '../../HOC/media';
 
 class ComponentFirst extends Component {
   render() {
-    return <h1>Hello</h1>;
+    return <h1>Hello, user</h1>;
   };
 };
 
-export default Media(ComponentFirst, '(max-width: 600px)', 'matchMedia');
+export default Media(ComponentFirst, '(min-width: 624px)', 'isMediaMatched');
