@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { isMediaMatched, queries } from "../helpers/helpers";
 
-const Device = (WrappedComponent) => {
+const device = (WrappedComponent) => {
   class Device extends Component {
     state = {
       isMobile: false,
@@ -29,7 +29,7 @@ const Device = (WrappedComponent) => {
     }
 
     render() {
-      return <WrappedComponent {...this.state} />;
+      return <WrappedComponent {...this.state} {...this.props} />;
     }
   }
 
@@ -39,4 +39,4 @@ const Device = (WrappedComponent) => {
   return Device;
 };
 
-export default Device;
+export default device;

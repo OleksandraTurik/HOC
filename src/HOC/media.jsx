@@ -1,27 +1,31 @@
 import React, { Component } from "react";
 import { isMediaMatched } from "../helpers/helpers";
 
-export default function Media(Wrapped, media, option) {
+export default function media(Wrapped, mediaQueries, option) {
   class Media extends Component {
     state = {
-      mediaMatched: false,
+      isMediaMatched: false,
     };
+    mediaMatched = isMediaMatched(mediaQueries);
 
     handleResize = () => {
-      this.setState({ mediaMatched: isMediaMatched(media) });
+      this.setState({ isMediaMatched: this.mediaMatched.matches });
     };
 
     componentDidMount() {
       this.handleResize();
-      window.addEventListener("resize", this.handleResize);
+      this.mediaMatched.addEventListener("change", this.handleResize);
     }
 
     componentWillUnmount() {
-      window.removeEventListener("resize", this.handleResize);
+      this.mediaMatched.removeEventListener("change", this.handleResize);
     }
 
     render() {
-      const props = { [option ?? "matchMedia"]: this.state.mediaMatched };
+      const props = {
+        ...this.props,
+        [option ?? "matchMedia"]: this.state.isMediaMatched,
+      };
       return <Wrapped {...props} />;
     }
   }

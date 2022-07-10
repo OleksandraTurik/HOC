@@ -1,11 +1,12 @@
 export const isMediaMatched = (media) => {
-  if (!window.matchMedia) return false;
-  return window.matchMedia(media).matches;
+  return window.matchMedia(media);
 };
 
 export const queries = {
-  mobile: "screen and (max-width: 623px)",
-  tablet: "screen and (min-width: 624px) and (max-width: 1020px)",
-  desktop: "screen and (min-width: 1021px) and (max-width: 1440px)",
-  printing: "screen and (min-width: 1440px)",
+  isSmallMobile: "screen and (max-width: 480px)",
+  isMobile: "screen (min-width: 479px) and (max-width: 623px)",
+  isTablet: "screen and (min-width: 624px) and (max-width: 1020px)",
+  isLaptop: "screen and (min-width: 1021px) and (max-width: 1440px)",
+  isPrinting: "print",
+  isHover: "hover",
 };
